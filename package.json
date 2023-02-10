@@ -1,0 +1,12 @@
+{
+  "name": "project-cypher",
+  "version": "1.0.0",
+  "description": "Chat bot and basic frontend for the cypher event.",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
