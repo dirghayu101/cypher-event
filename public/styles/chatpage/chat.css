@@ -1,0 +1,111 @@
+:root{
+    --primary-color:#15162D;
+    --shadow-color:#2c2e61;
+    
+}
+.teamName{
+    font-size: 20px;
+}
+body {
+background-image: url("http://localhost:5500/user/images/mobileWallpaper.jpeg") ;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+
+}
+
+.parent {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.messageContainer {
+    display: flex;
+    height: 100%;
+    overflow: scroll;
+}
+
+.messsages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+    /* min-height: 40px; */
+    width: fit-content;
+    font-size: 15px;
+    max-width: 80%;
+    
+    padding-top: 2%;
+    margin: 10px;
+    border-radius: 0px 12px 12px 12px;
+    background-color: #15162D;
+    -webkit-box-shadow: 3px 4px 43px -8px #2c2e61;
+    -moz-box-shadow: 3px 4px 43px -8px #2c2e61;
+    box-shadow: 3px 4px 43px -8px #2c2e61;
+   
+
+}
+.messsages h6{
+    font-size: 10px;
+}
+
+.messsages p {
+    /* text-overflow: ellipsis; */
+    /* width: 80%; */
+    color: white;
+
+
+}
+
+.serverMessage {
+
+    background-color: #15162D;
+
+    color: rgb(242, 5, 5);
+  
+
+}
+.serverMessage p{
+    color: red;
+}
+
+.clientMessage {
+
+
+    display: flex;
+    align-self: flex-end;
+    border-radius: 25px 0px 20px 25px;
+}
+
+.delta {
+    color: blue;
+}
+
+.charlie {
+        color: rgb(0, 255, 34);
+}
+
+.bravo {
+    color: rgb(246, 255, 0);
+}
+
+    
+
+
+.messageBar {
+    display: flex;
+    padding: 0%;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.messageBar input {
+    width: 50%;
+    border-radius: 5px;
+    outline: none;
+}
+.navbar{
+    background-color: #2c2e615e;
+}

@@ -8,13 +8,13 @@
     <link rel="stylesheet" type='text/css' href="/styles/login-page/login.css">
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
   
-    <title>Document</title>
+    <title>CYPHER</title>
 </head>
 
 <body>
     <div class="center">
         <h1>Cypher Login</h1>
-        <form method="post" id="login-form">
+        <form method="get" id="login-form">
           <div class="txt_field">
             <input type="text" id="email" required>
             <span></span>
@@ -25,9 +25,10 @@
             <span></span>
             <label>Password</label>
           </div>
-          <input type="submit" value="Login">
         </form>
+        <input id="submit" type="submit" value="Login">
       </div>
 </body>
+<script src="/scripts/login.js" ></script>
 
 </html>
