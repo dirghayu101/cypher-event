@@ -16,6 +16,4 @@ chat[0].addEventListener('click', () => {
 
     }
 
-
-
 })

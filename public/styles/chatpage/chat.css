@@ -27,7 +27,7 @@ background-repeat: no-repeat;
     overflow: scroll;
 }
 
-.messsages {
+.messages {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,27 +71,23 @@ background-repeat: no-repeat;
     color: red;
 }
 
-.clientMessage {
-
-
+.myMessage {
     display: flex;
     align-self: flex-end;
     border-radius: 25px 0px 20px 25px;
 }
 
-.delta {
+.first {
     color: blue;
 }
 
-.charlie {
+.second {
         color: rgb(0, 255, 34);
 }
 
-.bravo {
+.third {
     color: rgb(246, 255, 0);
 }
-
-    
 
 
 .messageBar {
@@ -108,4 +104,8 @@ background-repeat: no-repeat;
 }
 .navbar{
     background-color: #2c2e615e;
+}
+
+.highlight-refer{
+    border: 3px solid red;
 }

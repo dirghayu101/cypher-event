@@ -1,33 +1,54 @@
 const ErrorHandler = require("../utils/errorHandler.js");
 const catchAsyncError = require("../middleware/catchAsyncError.js");
 const path = require("path");
-sendLoginPage = catchAsyncError((req, res, next) => {
-    res.sendFile(path.resolve(__dirname, "../../public/login.html"))
-});
-sendLoginJs=catchAsyncError((req, res, next) => {
-    res.type('application/javascript');
-    res.sendFile(path.resolve(__dirname, "../../public/scripts/login.js"))
-});
-Introductionpage = catchAsyncError((req, res, next) => {
-    
-    res.sendFile(path.resolve(__dirname, "../../public/html/IntroductionPage.html"))
-});
-chatScreen = catchAsyncError((req, res, next) => {
-    
-    res.sendFile(path.resolve(__dirname, "../../public/html/chat.html"))
-});
-Images = catchAsyncError((req, res, next) => {
-    console.log(req.params.imageName)
-    const image=req.params.imageName
-    res.sendFile(path.resolve(__dirname, `../../public/assets/images/${image}`))
+const {Users} = require('../db/pseudoDB.js');
+const { sendToken } = require("../utils/jwt.js");
+const ServerSocket = require("../socket/serverSocket.js");
+
+const socketObjects = []
+
+module.exports.sendLoginPage = catchAsyncError((req, res, next) => {
+  res.sendFile(path.resolve(__dirname, "../../public/login.html"));
 });
 
+module.exports.sendLoginJavaScript = catchAsyncError((req, res, next) => {
+  res.type('application/javascript');
+  res.sendFile(path.resolve(__dirname, "../../public/scripts/login.js"))
+});
 
+module.exports.IntroductionPage = catchAsyncError((req, res, next) => {
+  res.sendFile(
+    path.resolve(__dirname, "../../public/html/IntroductionPage.html")
+  );
+});
 
-module.exports={
-    sendLoginPage,
-    Introductionpage,
-    sendLoginJs,
-    chatScreen,
-    Images
-}
+module.exports.chatScreen = catchAsyncError((req, res, next) => {
+  const filePath = path.resolve(__dirname, "../../public/html/chat.html")
+  res.sendFile(filePath)
+});
+
+module.exports.relatedImages = catchAsyncError((req, res, next) => {
+  const image = req.params.imageName;
+  res.sendFile(path.resolve(__dirname, `../../public/assets/images/${image}`));
+});
+
+module.exports.loginUser = catchAsyncError((req, res, next) => {
+  const {username, password} = req.body
+  if(!username || !password){
+    return next(new ErrorHandler("Please Enter Email and Password", 400))
+  }
+  let user = Users.find((val)=>val.rNum===username)
+  if(!user){
+    return next(new ErrorHandler("Contact the organizers, you aren't registered.", 401))
+  }
+  if(password != user.password){
+    return next(new ErrorHandler("Incorrect password.", 401))
+  }
+  sendToken(user, 200, res)
+})
+
+module.exports.setupSocketConnection = catchAsyncError((req, res, next) => {
+  const {rNum, name, grpID, grpName} = req.user
+  const socket = new ServerSocket(req.user)
+})
+
