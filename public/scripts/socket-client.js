@@ -2,9 +2,9 @@ const socket = io()
 const chat = document.querySelector('#chat')
 const messageContainer = document.querySelector('.messageContainer')
 const user = JSON.parse(localStorage.getItem('user'));
-const {rNum, password} = user
+const {rNum, password, grpName} = user
 
-socket.emit('joinRoom', {rNum, password})
+socket.emit('joinRoom', {rNum, password, grpName})
 
 // Message from server.
 socket.on('message', (message) => {
@@ -21,12 +21,12 @@ chat.addEventListener('click', sendChatMessage)
 function sendChatMessage(){
     // Get message text.
     let messageBox = document.querySelector('#msg')
-    let chatMessage = messageBox.value
-    if(!chatMessage){
+    let msg = messageBox.value
+    if(!msg){
         return
     }
     // Emit message to server.
-    socket.emit('chatMessage', chatMessage)
+    socket.emit('chatMessage', {msg, rNum, password, grpName})
     messageBox.value = ''
 
 

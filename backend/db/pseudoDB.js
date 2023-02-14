@@ -1,6 +1,6 @@
 // It's difficult to think of a proper database design at this point, so I am going to create a false database to test out my chat application and play around with its functionality.
 
-module.exports.Users = [
+let Users = [
     {
         userID: 1,
         rNum: '20BCAA01',
@@ -47,6 +47,7 @@ module.exports.Users = [
         name: 'Divya',
         grpID: 'G03',
         password: '12345678',
+        socketID: [],
         grpName: 'Eclairs',
     },
     {
@@ -58,3 +59,16 @@ module.exports.Users = [
         grpName: 'Charizard',
     },
 ]
+
+
+
+function getUserByRNum(rNum, password, grpName, socket){
+    let user = Users.find((val) => val.rNum === rNum);
+    if (user.password != password || user.grpName != grpName) {
+      socket.disconnect();
+    }
+    return user
+}
+
+
+module.exports = {Users, getUserByRNum}

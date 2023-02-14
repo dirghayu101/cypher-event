@@ -1,10 +1,10 @@
 const { formatMessage } = require("../utils/formatMessages");
 const botName = "Agent Jennifer";
-const { Users } = require("../db/pseudoDB");
+const {
+  updateUserSocketID,
+  getUserByRNum,
+} = require("../db/pseudoDB");
 const welcomeMessage = "Welcome to Cypher!";
-const userJoinedChat = "A user has joined the chat.";
-const userLeftChat = "A user has left the chat.";
-let user
 const cssValues = {
   bot: "container-fluid serverMessage messages important",
   first: "container-fluid myMessage messages first",
@@ -12,13 +12,21 @@ const cssValues = {
   third: "container-fluid myMessage messages third",
 };
 
-handleSocketConnection = (socket, io) => {
-  socket.on("joinRoom", ({ rNum, password }) => {
-    user = Users.find((val) => val.rNum === rNum);
-    if (user.password != password) {
-      socket.disconnect();
-    }
+let activeUsers = []; //Can be a column or something instead.
 
+handleSocketConnection = (socket, io) => {
+  socket.on("joinRoom", ({ rNum, password, grpName }) => {
+    let user = getUserByRNum(rNum, password, grpName, socket);
+    activeUsers.push({ name: user.name, rNum, grpName, sID: socket.id });
+    let repeatUser = activeUsers.filter((val) => val.rNum === user.rNum).length;
+    if (repeatUser <= 1) {
+      welcomeAndInformGrp(socket, grpName, user);
+    }
+    // Join the group
+    socket.join(grpName);
+  });
+
+  function welcomeAndInformGrp(socket, grpName, user) {
     // This will emit to single client that is connecting. Welcome client.
     socket.emit(
       "message",
@@ -27,27 +35,48 @@ handleSocketConnection = (socket, io) => {
 
     // This will emit to everyone except for the user.
     socket.broadcast
-      .to(user.grpName)
+      .to(grpName)
       .emit(
         "message",
-        formatMessage(botName, userJoinedChat, cssValues["bot"])
+        formatMessage(
+          botName,
+          `Agent ${user.name} has joined the chat!`,
+          cssValues["bot"]
+        )
       );
-  });
+  }
 
   // Listen for chat messages from the client.
-  socket.on("chatMessage", (msg) => {
-    io.to(user.grpName).emit(
+  socket.on("chatMessage", ({ msg, rNum, password, grpName }) => {
+    user = getUserByRNum(rNum, password, grpName, socket);
+    io.to(grpName).emit(
       "message",
-      formatMessage("USER", msg, cssValues["first"])
+      formatMessage(user.name, msg, cssValues["first"])
     );
   });
 
   // io.emit will broadcast to everyone. Runs when disconnect.
   socket.on("disconnect", () => {
-    io.to(user.grpName).emit(
-      "message",
-      formatMessage(botName, userLeftChat, cssValues["bot"])
-    );
+    let findUser = activeUsers.find((val) => val.sID === socket.id);
+    if (!findUser) {
+      return;
+    }
+    let index = activeUsers.indexOf(findUser);
+    user = activeUsers[index];
+    activeUsers.splice(index, 1);
+    let numberOfUsers = activeUsers.filter(
+      (val) => val.rNum === user.rNum
+    ).length;
+    if (numberOfUsers === 0) {
+      io.to(user.grpName).emit(
+        "message",
+        formatMessage(
+          botName,
+          `Agent ${user.name} has left the chat!`,
+          cssValues["bot"]
+        )
+      );
+    }
   });
 };
 
