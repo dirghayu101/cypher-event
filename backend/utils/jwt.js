@@ -7,8 +7,10 @@ const getJWTToken = (rNum) => {
 }
 
 module.exports.sendToken = (user, statusCode, res) => {
-    const token = getJWTToken(user.rNum)    //!NOTE: This will change. If it will be a method of user in mongodb.
+    const token = getJWTToken(user.rNum) 
+       //!NOTE: This will change. If it will be a method of user in mongodb.
     const options = {
+        
         expires: new Date(
             Date.now() + 90 * 60 * 1000 //90 minutes to milliseconds.
         ),
@@ -17,8 +19,10 @@ module.exports.sendToken = (user, statusCode, res) => {
 
     res.status(statusCode).cookie('token', token, options).json({
         success: true,
+        name:"tushar",
         user, 
         token,
+    
     })
 
 }

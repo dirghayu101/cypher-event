@@ -5,6 +5,6 @@ module.exports.formatMessage = (username, text, css) => {
         username,
         text, 
         css,
-        time: moment().format('h:mm a')
+        time: moment().format('hh:mm')
     }
 }

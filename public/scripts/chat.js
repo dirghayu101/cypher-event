@@ -1,11 +1,11 @@
-const cookieParser = require("cookie-parser");
+
 
 const seconds = document.querySelector("#seconds")
 const min = document.querySelector("#min")
 var minutes = 89;
 var secon = 60;
 min.innerText=minutes
-cookieParser
+
 let x = document.cookie;
 console.log(x,"fsdf")
 function countdown() {
