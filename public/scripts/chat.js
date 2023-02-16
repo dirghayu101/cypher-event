@@ -7,7 +7,6 @@ var secon = 60;
 min.innerText=minutes
 
 let x = document.cookie;
-console.log(x,"fsdf")
 function countdown() {
  secon--;
     if(secon==0){

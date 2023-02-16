@@ -1,15 +1,12 @@
 const { formatMessage } = require("../utils/formatMessages");
-const botName = "Agent Jennifer";
-const {
-  updateUserSocketID,
-  getUserByRNum,
-} = require("../db/pseudoDB");
+const botName = "Jenny";
+const { getUserByRNum } = require("../db/pseudoDB");
 const welcomeMessage = "Welcome to Cypher!";
+const multipleTabMessage = `It seems like you have opened multiple tab. You won't be able to communicate on this tab.`
 const cssValues = {
   bot: "container-fluid serverMessage messages important",
-  first: "container-fluid myMessage messages first",
-  second: "container-fluid myMessage messages second",
-  third: "container-fluid myMessage messages third",
+  first: "container-fluid messages first",
+  second: "container-fluid messages second",
 };
 
 let activeUsers = []; //Can be a column or something instead.
@@ -21,9 +18,11 @@ handleSocketConnection = (socket, io) => {
     let repeatUser = activeUsers.filter((val) => val.rNum === user.rNum).length;
     if (repeatUser <= 1) {
       welcomeAndInformGrp(socket, grpName, user);
+      socket.join(grpName);
+    } else{
+      preventRepeatConnection()
     }
     // Join the group
-    socket.join(grpName);
   });
 
   function welcomeAndInformGrp(socket, grpName, user) {
@@ -46,13 +45,28 @@ handleSocketConnection = (socket, io) => {
       );
   }
 
-  // Listen for chat messages from the client.
-  socket.on("chatMessage", ({ msg, rNum, password, grpName }) => {
-    user = getUserByRNum(rNum, password, grpName, socket);
-    io.to(grpName).emit(
+  function preventRepeatConnection(){
+    let findUser = activeUsers.find((val) => val.sID === socket.id);
+    if (!findUser) {
+      return;
+    }
+    let index = activeUsers.indexOf(findUser);
+    activeUsers.splice(index, 1);
+    socket.emit(
       "message",
-      formatMessage(user.name, msg, cssValues["first"])
+      formatMessage(botName, multipleTabMessage, cssValues["bot"])
     );
+    socket.disconnect()
+  }
+
+  // Listen for chat messages from the client.
+  socket.on("chatMessage", function ({ msg, rNum, password, grpName }, ack) {
+    user = getUserByRNum(rNum, password, grpName, socket);
+    socket
+      .to(grpName)
+      .emit("message", formatMessage(user.name, msg, user.css));
+    ack("received");
+
   });
 
   // io.emit will broadcast to everyone. Runs when disconnect.

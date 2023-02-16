@@ -27,5 +27,11 @@ const handleLogin = async (event) => {
 }
 
 document.querySelector('#submit').addEventListener('click', handleLogin)
+document.querySelector('#password').addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.querySelector('#submit').click();
+    }
+});
 
 // const user = JSON.parse(localStorage.getItem('user'));

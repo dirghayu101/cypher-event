@@ -5,7 +5,6 @@ const {Users} = require('../db/pseudoDB.js');
 const { sendToken } = require("../utils/jwt.js");
 const ServerSocket = require("../socket/serverSocket.js");
 
-const socketObjects = []
 
 module.exports.sendLoginPage = catchAsyncError((req, res, next) => {
   res.sendFile(path.resolve(__dirname, "../../public/login.html"));
@@ -47,8 +46,14 @@ module.exports.loginUser = catchAsyncError((req, res, next) => {
   sendToken(user, 200, res)
 })
 
-module.exports.setupSocketConnection = catchAsyncError((req, res, next) => {
-  const {rNum, name, grpID, grpName} = req.user
-  const socket = new ServerSocket(req.user)
+
+
+module.exports.processUserResponse = catchAsyncError((req, res, next) => {
+  const response = req.body
+  //Logic for response should be here.
+  res.status(200).json({
+    success: true,
+    message: 'Your answer is correct motherfucker!'
+  })
 })
 

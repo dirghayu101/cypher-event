@@ -19,58 +19,14 @@
         <!-- As a link -->
         <nav class="navbar p-0 w-100 container-fluid">
             <div class="container-fluid dflex justify-content-between py-3 ">
-                <p class="navbar-brand  teamName text-light" >Raw</p>
+                <p class="navbar-brand  teamName text-light">Raw</p>
 
                 <p class="navbar-brand text-light " id="timer"> <span id="min">90</span> : <span id="seconds">00</span>
                 </p>
 
             </div>
         </nav>
-        <div class="container-fluid w-100 h-80 p-0 d-flex flex-column messageContainer" >
-            <div class="container-fluid serverMessage messages important ">
-                <h6>Agent Jenny</h6>
-                <p>This is from server</p>
-                <p>12:32</p> 
-            </div>
-            <div class="container-fluid  myMessage messages second ">
-                <h6>Agent delta</h6>
-                <p>This is from delta</p>
-                <p>12:32</p> 
-            </div>
-            <div class="container-fluid  messages first">
-                <h6>Agent charlie</h6>
-                <p>This is from charlie Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis rerum dolores
-                    tempore nam a neque veniam molestiae excepturi aperiam quae, fugiat itaque dignissimos deleniti
-                    consequuntur. Temporibus natus et sint maxime!</p>
-                <p>12:32</p> 
-            </div>
-            <div class="container-fluid  messages first">
-                <h6>Agent bravo</h6>
-                <p>This is from bravo</p>
-                <p>12:32</p> 
-            </div>
-            <div class="container-fluid  messages second">
-                <h6>Agent bravo</h6>
-                <p>This is from bravo</p>
-                <p>12:32</p> 
-            </div>
-            <div class="container-fluid  messages third">
-                <h6>Agent bravo</h6>
-                <p>This is from bravo</p>
-                <p>12:32</p> 
-            </div>
-            <div class="container-fluid  messages second others">
-                <h6>Agent bravo</h6>
-                <p>This is from bravo</p>
-                <p>12:32</p> 
-            </div>
-            <div class="container-fluid  messages first others">
-                <h6>Agent bravo</h6>
-                <p>This is from bravo</p>
-                <p>12:32</p> 
-                 <!-- TODO: Time to be styled -->
-            </div>
-
+        <div class="container-fluid w-100 h-80 p-0 d-flex flex-column messageContainer">
         </div>
         <div class="container-fluid messageBar ">
             <button type="button" class="btn btn-outline-primary "> <span class="material-symbols-outlined ">
@@ -78,7 +34,7 @@
                 </span></button>
             <input id="msg" type="text" placeholder="Enter Message" required autocomplete="off">
             <button type="button" class="btn btn-primary" id="chat">Chat</button>
-            <button type="button" class="btn btn-primary" >Submit</button>
+            <button type="button" id="serverSend" class="btn btn-primary">Submit</button>
 
 
         </div>
@@ -92,8 +48,8 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
 
-
     <script src="../scripts/chat.js"></script>
+    <script defer src="../scripts/sendResponse.js"></script>
     <!-- <script src="../scripts/messageHandler.js"></script> -->
 </body>
 
