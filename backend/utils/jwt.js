@@ -19,10 +19,25 @@ module.exports.sendToken = (user, statusCode, res) => {
 
     res.status(statusCode).cookie('token', token, options).json({
         success: true,
-        name:"tushar",
         user, 
         token,
     
     })
 
+}
+
+module.exports.sendAdminToken = (rNum, statusCode, res) => {
+    const token = jwt.sign({rNum:rNum}, process.env.ADMIN_JWT_SECRET, {
+        expiresIn: 600000 //10 minutes
+    })
+    const options = {
+        expires: new Date(
+            Date.now() + 10 * 60 * 1000 //10 minutes to milliseconds.
+        ),
+        httpOnly: true,
+    }
+    res.status(statusCode).cookie('token', token, options).json({
+        success: true,
+        token
+    })
 }

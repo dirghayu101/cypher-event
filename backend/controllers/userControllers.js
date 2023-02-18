@@ -3,7 +3,6 @@ const catchAsyncError = require("../middleware/catchAsyncError.js");
 const path = require("path");
 const {Users} = require('../db/pseudoDB.js');
 const { sendToken } = require("../utils/jwt.js");
-const ServerSocket = require("../socket/serverSocket.js");
 
 
 module.exports.sendLoginPage = catchAsyncError((req, res, next) => {
@@ -50,7 +49,7 @@ module.exports.loginUser = catchAsyncError((req, res, next) => {
 
 module.exports.processUserResponse = catchAsyncError((req, res, next) => {
   const response = req.body
-  //Logic for response should be here.
+  // TODO Logic for response should be here.
   res.status(200).json({
     success: true,
     message: 'Your answer is correct motherfucker!'

@@ -15,3 +15,15 @@ module.exports.isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
     }
     return next(new ErrorHandler("Authentication failed.", 401))
 })
+
+module.exports.isAuthenticatedAdmin = catchAsyncError(async (req, res, next) => {
+    const {token} = req.cookies
+    if(!token){
+        return next(new ErrorHandler("Unauthorized access, cannot find token.", 401))
+    }
+    const verifyJWT = jwt.verify(token, process.env.ADMIN_JWT_SECRET)
+    if(verifyJWT){
+        return next()
+    }
+    return next(new ErrorHandler("Token Expired or is invalid.", 401))
+})
