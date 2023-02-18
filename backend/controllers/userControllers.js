@@ -1,7 +1,7 @@
 const ErrorHandler = require("../utils/errorHandler.js");
 const catchAsyncError = require("../middleware/catchAsyncError.js");
 const path = require("path");
-const {Users} = require('../db/pseudoDB.js');
+const Users = require('../models/user.js')
 const { sendToken } = require("../utils/jwt.js");
 
 
@@ -30,12 +30,12 @@ module.exports.relatedImages = catchAsyncError((req, res, next) => {
   res.sendFile(path.resolve(__dirname, `../../public/assets/images/${image}`));
 });
 
-module.exports.loginUser = catchAsyncError((req, res, next) => {
+module.exports.loginUser = catchAsyncError(async (req, res, next) => {
   const {username, password} = req.body
   if(!username || !password){
     return next(new ErrorHandler("Please Enter Email and Password", 400))
   }
-  let user = Users.find((val)=>val.rNum===username)
+  let user = await Users.findOne({rNum:username})
   if(!user){
     return next(new ErrorHandler("Contact the organizers, you aren't registered.", 401))
   }
@@ -49,7 +49,7 @@ module.exports.loginUser = catchAsyncError((req, res, next) => {
 
 module.exports.processUserResponse = catchAsyncError((req, res, next) => {
   const response = req.body
-  // TODO Logic for response should be here.
+  // TODO: Logic for response should be here.
   res.status(200).json({
     success: true,
     message: 'Your answer is correct motherfucker!'

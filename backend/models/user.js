@@ -23,14 +23,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: `St. Joseph's University`
     },
-    connectionTimes: {
-        type: Array,
-        default: []
-    },
-    disconnectionTimes: {
-        type: Array,
-        default: []
-    },
     answers: {
         type: Array,
         default: []
@@ -38,8 +30,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, "Please enter your password"],
-        minLength: [8, "Password should be greater than 8 characters"],
-        select: false
+        minLength: [8, "Password should be greater than 8 characters"]
     },
     grpName: {
         type: String,

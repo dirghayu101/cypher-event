@@ -1,7 +1,7 @@
 const ErrorHandler = require('../utils/errorHandler')
 const catchAsyncError = require('./catchAsyncError')
 const jwt = require("jsonwebtoken")
-const {Users} = require('../db/pseudoDB.js')
+const User = require('../models/user')
 
 module.exports.isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
     const {token} = req.cookies
@@ -10,7 +10,7 @@ module.exports.isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
     }
     const verifyJWT = jwt.verify(token, process.env.JWT_SECRET)
     if(verifyJWT){
-        req.user = Users.find((val) => val.rNum === verifyJWT.rNum)   //NOTE: Database request.
+        req.user = await User.findOne({rNum: verifyJWT.rNum})
         return next()
     }
     return next(new ErrorHandler("Authentication failed.", 401))
