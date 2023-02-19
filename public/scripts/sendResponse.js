@@ -52,7 +52,8 @@ async function postAnswer() {
       password,
       grpName,
       userName,
-      answer: message,
+      // answer: message,
+      answer: 2
     }),
   }).then((res) => res.json());
   // NOTE: This will be the response by server to the answer posted by user.
@@ -73,7 +74,6 @@ function serverSendMessage(message) {
 }
 
 function serverMessageGroupDisplay(message){
-  console.log("in server message group display emitting method.")
   socket.emit('serverMessageSend', { msg:message, rNum, password, grpName }, function(ack){
     if(ack === 'received'){
       serverSendMessage(message)

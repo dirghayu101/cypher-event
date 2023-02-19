@@ -13,7 +13,7 @@ io.on('connection', socket => {
   handleSocketConnection(socket, io)
 })
 
-const start = () => {
+const start = async () => {
   try{
     connectDatabase()
     server.listen(PORT, () => {
@@ -26,4 +26,4 @@ const start = () => {
   
 start();
 
-module.exports = {server}
+module.exports = {server, io}

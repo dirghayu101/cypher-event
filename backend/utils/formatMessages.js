@@ -1,4 +1,4 @@
-function getCurrentTime() {
+const getCurrentTime = () => {
     const now = new Date();
     // Get the current time in hours and minutes
     const hours = now.getHours();
@@ -10,7 +10,7 @@ function getCurrentTime() {
     return formattedTime;
   }
 
-module.exports.formatMessage = (username, text, css) => {
+const formatMessage = (username, text, css) => {
     return{
         username,
         text, 
@@ -18,3 +18,5 @@ module.exports.formatMessage = (username, text, css) => {
         time: getCurrentTime(),
     }
 }
+
+module.exports = {getCurrentTime, formatMessage}
