@@ -9,7 +9,7 @@ p {
   font-size: 20px;
 }
 body {
-  background-image: url("/user/images/mobileWallpaper.jpeg");
+  background-image: url("/user/images/DesktopWallpaper.jpeg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -26,7 +26,13 @@ body {
 .messageContainer {
   display: flex;
   height: 100%;
-  overflow: scroll;
+  overflow-X: hidden;
+  overflow-Y: scroll;
+  
+  
+}
+.messageContainer::-webkit-scrollbar{
+  display: none;
 }
 
 .messages {
@@ -71,6 +77,7 @@ body {
   align-self: flex-end;
   border-radius: 20px 0px 20px 20px;
   background-color: #0d6efd;
+  padding: 0.5rem;
 }
 .myMessage > h6 {
   display: none;
@@ -91,18 +98,22 @@ body {
 .messageBar {
   display: flex;
   flex-direction: row;
-  padding: 2%;
+  padding: 0.5%;
   width: 100%;
   justify-content: space-around;
   background-color: #2c2e615e;
 }
 
 .messageBar > input {
-  border-radius: 5px;
-  outline: none;
+  flex-grow: 9;
+  outline:none;
+  border: none;
+  border-radius: 12px;
 }
 .messageBar button {
-  margin: 0% 1%;
+  margin: 0% .5%;
+  flex-grow: 1;
+  border-radius: 12px;
 }
 .navbar {
   background-color: #2c2e615e;
@@ -112,9 +123,9 @@ body {
   border: 3px solid red;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 600px) {
   body {
-    background-image: url("/user/images/DesktopWallpaper.jpeg");
+    background-image: url("/user/images/mobileWallpaper.jpeg");
 
     background-size: fill;
     width: 100vw;
@@ -126,23 +137,42 @@ body {
   }
   .messageBar {
     background-color: #2c2e615e;
-    padding: 0.5%;
+    padding: 0%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    margin-bottom: 1%;
   }
   .messageBar > input {
-    flex-grow: 40;
+    width: 40%;
+    flex-grow: 5;
     border-radius: 12px;
     border: none;
+    border-radius: 12px 0px 0px 12px;
     padding-left: 1%;
   }
+  #chat{
+    border-radius: 0px 12px 12px 0px;
+  }
+  
   .messageBar > button {
+    /* width: 5%; */
     margin: 0% 5px;
-    flex-grow: 3;
+    flex-grow: 7;
     border-radius: 20px;
+    margin-left: 0%;
   }
   .messageContainer::-webkit-scrollbar {
     display: none;
+  }
+  .menue{
+    width: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  .menue span{
+    font-size: 1.2rem
   }
 }

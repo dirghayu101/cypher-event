@@ -1,7 +1,14 @@
 body{
     background-color: #15162D;
 }
+
+
 .vd{
+    min-height: 7rem;
+    min-width: 7rem;
+    height: 100%;
+    width: 100%;
+    /* background-color: pink; */
     margin: 5% 0% 0% 5%;
     position: relative;
     display: flex;
@@ -11,6 +18,7 @@ body{
 }
 
 .vd span{
+ 
     z-index: 5;
     position: absolute;
     font-size: 7rem;
@@ -18,7 +26,8 @@ body{
     
 }
 #introVideo{
-    height: fit-content;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     -webkit-box-shadow: 3px 4px 43px -8px #2c2e61;
     -moz-box-shadow: 3px 4px 43px -8px #2c2e61;
@@ -27,6 +36,7 @@ body{
 .instructionContainer{
     margin-top: 15%;
     color: white;
+    justify-content: space-between;
 }
 .instructionContainer li{
     margin: 5% 0%;
@@ -41,3 +51,16 @@ body{
     flex-direction: row;
     justify-content: end;
 }
+@media only screen and (max-width: 600px) {
+    .introContainer{
+        display: flex;
+        flex-direction: column;
+        padding: 0%;
+        margin: 0%;
+    }
+    .vd{
+        height: 100%;
+        width: 100%;
+        margin: 0%;
+    }
+  }

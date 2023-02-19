@@ -3,7 +3,7 @@ const vd = document.getElementsByClassName("vd")
 const nextbtn = document.querySelectorAll(".gameStartBtn")
 const playBtn = document.querySelectorAll(".vd span")
 
-
+console.log(vd)
 vd[0].addEventListener('click',()=>{
     var timeout = setTimeout(function() {
         console.log("video took too long to load")
@@ -16,7 +16,10 @@ vd[0].addEventListener('click',()=>{
 })
 
 video.addEventListener("ended",()=>{
-video.style.display="none";
+    console.log("ended")
+vd[0].style.display="none";
+video.style.height="0px";
+video.style.width="0px";
 nextbtn[0].style.display="flex"
     
 })
