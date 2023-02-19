@@ -18,7 +18,7 @@ const handleLogin = async (event) => {
         console.log(result)
         if(result.success){
             localStorage.setItem('user', JSON.stringify(result.user))
-            window.location.href='http://localhost:5500/user/intro'
+            window.location.href='http://34.93.8.48/user/intro'
         } else{
             alert(result.message)
         }

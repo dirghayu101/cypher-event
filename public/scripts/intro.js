@@ -25,5 +25,5 @@ nextbtn[0].style.display="flex"
 })
 nextbtn[0].addEventListener("click",()=>{
 
-    window.location.href="http://localhost:5500/user/chatScreen"
+    window.location.href="http://34.93.8.48/user/chatScreen"
 })

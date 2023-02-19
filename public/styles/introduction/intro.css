@@ -52,6 +52,9 @@ body{
     justify-content: end;
 }
 @media only screen and (max-width: 600px) {
+    body{
+        height: 100vh;
+    }
     .introContainer{
         display: flex;
         flex-direction: column;
