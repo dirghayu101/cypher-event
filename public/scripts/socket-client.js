@@ -59,6 +59,7 @@ function showOthersMessage(message) {
     <p>${message.time}</p>`;
   messageContainer.appendChild(div);
   playSound();
+  messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
 function showUserMessage(message) {

@@ -14,29 +14,28 @@ function submitAnswer(event) {
   if (!msgValue) {
     return;
   }
-  showUserMessage(msgValue);
+  sendChatMessage();  //! This is the point
   serverAndClientCommunication.push({ user: userName, text: msgValue });
   let arrLength = serverAndClientCommunication.length;
   if (
     (msgValue === "CONFIRM" || msgValue === "confirm") &&
     serverAndClientCommunication.length >= 4
   ) {
-    serverSendMessage(
-      "As we have received your confirmation, we will be proceeding with your request agent."
+    serverMessageGroupDisplay(
+      `As we have received your confirmation, we will be proceeding with your request agent ${userName}.`
     );
     postAnswer();
     return;
   }
   if (serverAndClientCommunication[arrLength - 2].text === serverWarnMessage) {
     // Check if the server asked client for confirmation.
-    serverSendMessage(
-      `As I didn't receive any confirmation agents, we won't be proceeding with your request. We are working on borrowed time, I advice you to be vigilant.`
+    serverMessageGroupDisplay(
+      `As I didn't receive any confirmation agent ${userName}, we won't be proceeding with your request. We are working on borrowed time, I advice you to be vigilant.`
     );
     return;
   }
-  chatInputBox.value = "";
+  serverMessageGroupDisplay(serverWarnMessage);
 
-  serverSendMessage(serverWarnMessage);
 }
 
 async function postAnswer() {
@@ -56,8 +55,8 @@ async function postAnswer() {
       answer: message,
     }),
   }).then((res) => res.json());
-
-  serverSendMessage(result.message);
+  // NOTE: This will be the response by server to the answer posted by user.
+  serverMessageGroupDisplay(result.message);
 }
 
 function serverSendMessage(message) {
@@ -71,4 +70,15 @@ function serverSendMessage(message) {
   chatInputBox.value = "";
   playSound();
   messageContainer.scrollTop = messageContainer.scrollHeight;
+}
+
+function serverMessageGroupDisplay(message){
+  console.log("in server message group display emitting method.")
+  socket.emit('serverMessageSend', { msg:message, rNum, password, grpName }, function(ack){
+    if(ack === 'received'){
+      serverSendMessage(message)
+    } else {
+      alert("Connection failed!");
+    }
+  })
 }

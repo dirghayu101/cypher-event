@@ -69,6 +69,20 @@ handleSocketConnection = (socket, io) => {
 
   });
 
+  socket.on("serverMessageSend", function({msg, rNum, password, grpName}, ack){
+    socket.broadcast
+    .to(grpName)
+    .emit(
+      "message",
+      formatMessage(
+        botName,
+        msg,
+        cssValues["bot"]
+      )
+    );
+    ack("received")
+  })
+
   // io.emit will broadcast to everyone. Runs when disconnect.
   socket.on("disconnect", () => {
     let findUser = activeUsers.find((val) => val.sID === socket.id);
