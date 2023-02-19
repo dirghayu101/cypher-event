@@ -126,7 +126,7 @@ body {
 @media only screen and (max-width: 600px) {
   body {
     background-image: url("/user/images/mobileWallpaper.jpeg");
-    height: 100vh;
+    height: 80vh;
     background-size: fill;
     width: 100vw;
     overflow: hidden;
