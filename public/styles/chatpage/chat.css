@@ -127,6 +127,7 @@ body {
   body {
     background-image: url("/user/images/mobileWallpaper.jpeg");
     height: 100%;
+    min-height: -webkit-fill-available;
     background-size: fill;
     width: 100vw;
     overflow: hidden;
