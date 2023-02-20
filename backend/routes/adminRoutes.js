@@ -1,6 +1,6 @@
 const express = require("express");
 const { insertUser, authorizeAdmin, getAllUsers, getSingleUser, deleteSingleUser, updateUserInformation, getUsersByGrpName, deleteAllUsers, insertUserFromJsonFile} = require("../controllers/adminUserCollectionController");
-const {insertGroup, updateGroupPatch, updateGroupPut, deleteGroup, getAllGroups, getSingleGroup, deleteAllGroups} = require("../controllers/adminGroupCollectionController.js")
+const {insertGroup, updateGroupPatch, updateGroupPut, deleteGroup, getAllGroups, getSingleGroup, deleteAllGroups, insertMultipleGroups} = require("../controllers/adminGroupCollectionController.js")
 const { isAuthenticatedAdmin } = require("../middleware/authorization");
 const { getAllQuestions, insertSingleQuestion, deleteQuestionsInCollection, insertQuestionsInCollection, deleteQuestionById } = require("../controllers/adminQuestionController");
 const router = express.Router();
@@ -25,6 +25,7 @@ router.route('/deleteGroup/:grpName').delete(isAuthenticatedAdmin, deleteGroup)
 router.route('/getAllGroups').get(isAuthenticatedAdmin, getAllGroups)
 router.route('/getSingleGroup/:grpName').get(isAuthenticatedAdmin, getSingleGroup)
 router.route('/deleteAllGroups/confirm/deleteAll').delete(isAuthenticatedAdmin, deleteAllGroups)
+router.route('/insertMultipleGroups').get(isAuthenticatedAdmin, insertMultipleGroups)
 
 // Question Collection Routes
 router.route('/insertSingleQuestion').post(isAuthenticatedAdmin, insertSingleQuestion)

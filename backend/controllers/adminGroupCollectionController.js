@@ -2,6 +2,7 @@ const ErrorHandler = require("../utils/errorHandler.js");
 const catchAsyncError = require("../middleware/catchAsyncError.js");
 const { sendAdminToken } = require("../utils/jwt.js");
 const Group = require("../models/group.js");
+const { Groups } = require("../db/grpDB.js");
 
 module.exports.insertGroup = catchAsyncError(async (req, res, next) => {
     const {grpName, grpID, grpMembers} = req.body
@@ -99,4 +100,16 @@ module.exports.deleteAllGroups = catchAsyncError(async (req, res, next) => {
         success: true,
         message: "Deleted all the groups in the collection."
     })
+})
+
+module.exports.insertMultipleGroups = catchAsyncError(async (req, res, next) => {
+    let result = await Group.insertMany(Groups)
+  if (!result) {
+    return next(new ErrorHandler("Insertion didn't occur.", 500));
+  }
+  res.status(201).json({
+    success: true,
+    message: "Following groups successfully inserted:",
+    result,
+  });
 })
