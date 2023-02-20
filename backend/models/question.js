@@ -2,9 +2,10 @@ const mongoose = require('mongoose')
 
 const questionSchema = new mongoose.Schema({
     question: {
-        type: String,
+        type: Array,
         required: [true],
-        unique: true
+        unique: true,
+        default: []
     },
     answer: {
         type: Array,

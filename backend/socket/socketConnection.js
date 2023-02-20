@@ -15,10 +15,6 @@ let activeUsers = []; //Can be a column or something instead.
 
 handleSocketConnection = (socket, io) => {
   socket.on("joinRoom", async ({ rNum, password, grpName }) => {
-    let alreadyAnswered = await checkAnswered(grpName)         //If the person is reconnecting, then we won't show them the first question again.
-    if(alreadyAnswered){
-      return
-    } 
     let user = getUserByRNum(rNum, password, grpName, socket);
     activeUsers.push({ name: user.name, rNum, grpName, sID: socket.id });
     let repeatUser = activeUsers.filter((val) => val.rNum === user.rNum).length;
@@ -28,6 +24,7 @@ handleSocketConnection = (socket, io) => {
     } else{
       preventRepeatConnection()
     }
+
     // Join the group
   });
   async function checkAnswered(grpName){
@@ -46,8 +43,13 @@ handleSocketConnection = (socket, io) => {
       return false
     }
   }
-  function welcomeAndInformGrp(socket, grpName, user) {
+  
+  async function welcomeAndInformGrp(socket, grpName, user) {
     // This will emit to single client that is connecting. Welcome client.
+    let alreadyAnswered = await checkAnswered(grpName)         //If the person is reconnecting, then we won't show them the first question again.
+    if(alreadyAnswered){
+      return
+    } 
     socket.emit(
       "message",
       formatMessage(botName, `We are pleased to welcome you to mission cypher Agent ${user.name}!`, cssValues["bot"])

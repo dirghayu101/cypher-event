@@ -2,6 +2,7 @@ const ErrorHandler = require("../utils/errorHandler.js");
 const catchAsyncError = require("../middleware/catchAsyncError.js");
 const { sendAdminToken } = require("../utils/jwt.js");
 const User = require("../models/user.js");
+const {Users:pseudoDbUsers} = require('../db/pseudoDB.js')
 
 
 module.exports.authorizeAdmin = catchAsyncError(async (req, res, next) => {
@@ -116,4 +117,16 @@ module.exports.getUsersByGrpName = catchAsyncError(async (req, res, next) => {
     message: "Users with the group name queried: ",
     users
   })
+})
+
+module.exports.insertUserFromJsonFile = catchAsyncError(async (req, res, next) => {
+  let result = await User.insertMany(pseudoDbUsers)
+  if (!result) {
+    return next(new ErrorHandler("Insertion didn't occur.", 500));
+  }
+  res.status(201).json({
+    success: true,
+    message: "Following users successfully inserted:",
+    result,
+  });
 })

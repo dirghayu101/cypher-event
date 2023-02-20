@@ -23,10 +23,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: `St. Joseph's University`
     },
-    answers: {
-        type: Array,
-        default: []
-    },
     password: {
         type: String,
         required: [true, "Please enter your password"],
