@@ -8,9 +8,11 @@ const cssValues = {
   first: "container-fluid messages first",
   second: "container-fluid messages second",
 };
-const firstQuestion = `We have some hostile organizations on our radar who are not very amused with our country's harmony and progress. They are planning something big. <br><br>We have found these social media handles of those organizations. Agents your task is to find out the most likely of them behind this conspiracy. Since this is a recent development you should start with carrying out a thorough analysis of their recent social media post.`
+const firstQuestionArr = [`We have some hostile organisations on our radar. They are not very delighted with the recent India-Israel deal and fancy giving us a lesson.`, `Our sources say they are planning something big. We have got hold of some social media handles of some hostile organisations which might carry out these plans.`,`Agents your task is to find out the most likely of them behind this conspiracy.`, `Since this is a recent development you should start by carrying out a thorough analysis of their recent social media post.`, `The Instagram usernames are:`,`1. order_of_the_black_hand`,`2. infernal_syndicate`,`3. the_dark_empire_`]
 
-const socialMediaList =  `<ol><li>Social Media 1.</li><li>Social Media 2.</li><li>Social media 3</li></ol>`
+
+const introductionArr = [`As the saying goes advent of enemies is a sign of progress.`, `We as a country have been progressing and uplifting our people, and certain organisations cannot tolerate our people’s happiness.`, `These groups want and try to pull us down at every opportunity they get and we here at cypher ensure that this doesn’t happen.`, `We have one single objective, our country should prevail and flourish without any external friction.`, `This chat is a 128-bit encrypted interface nothing is stored here and it is meant for confidential communication.`, `Whatever we discuss here will be off the record.`, `You might wonder how I am typing this fast and Jennifer sound very un-Indian. These are pre-recorded instructions and Jennifer is my pseudonym.`, `I will only tip you about things necessary for the mission. Since this is a pre-recorded chat, you have to be very specific about your answer format.`,`There are two buttons, the rightmost button will send an answer to me and also the group. I will assign some officers to do further investigation based on your suggestions and this will cost us resources.`, `To drop a message to me, click the pink button.`, `You can use the blue button to chat in your group.`]
+
 let activeUsers = []; //Can be a column or something instead.
 
 handleSocketConnection = (socket, io) => {
@@ -67,15 +69,22 @@ handleSocketConnection = (socket, io) => {
         )
       );
 
-      socket.emit(
-        "message",
-        formatMessage(botName, firstQuestion, cssValues["bot"])
-      );
 
+    introductionArr.forEach((val) => {
       socket.emit(
         "message",
-        formatMessage(botName, socialMediaList, cssValues["bot"])
+        formatMessage(botName, val, cssValues["bot"])
       );
+    })
+
+    firstQuestionArr.forEach((val) => {
+      socket.emit(
+        "message",
+        formatMessage(botName, val, cssValues["bot"])
+      );
+    })
+      
+
   }
 
   function preventRepeatConnection(){

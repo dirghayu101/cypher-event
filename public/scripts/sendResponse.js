@@ -93,10 +93,26 @@ function serverMessageGroupDisplay(message) {
   );
 }
 
+const helpButton = document.querySelector('#helpBtn')
+const helpMessage = `If you are facing any difficulty or any issues, feel free to contact any of the organizers by whichever mean you feel comfortable in:<br>
+1. +917668722367 - Dirghayu Joshi<br>
+2. +916376084170 - Tushar Mishra<br>
+3. +919108955449 - Heenal Jain<br>
+<br>
+Remember, we are here to help you!`
+helpButton.addEventListener('click', printHelpSource)
+function printHelpSource(event){
+  serverSendMessage()
+}
+
 const lastQuestionButton = document.querySelector('#lastQuestion')
 lastQuestionButton.addEventListener('click', getQuestion)
 async function getQuestion(event){
   event.preventDefault()
   const result = await fetch(`/user/lastQuestion/${grpName}`).then((res) => res.json());
-  result.currentQuestion.forEach(part => serverSendMessage(part))
+  if(result.success){
+    result.currentQuestion.forEach(part => serverSendMessage(part))
+  } else{
+    serverSendMessage(result.currentQuestion)
+  }
 }

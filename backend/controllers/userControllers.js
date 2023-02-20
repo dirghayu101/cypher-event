@@ -84,14 +84,16 @@ module.exports.processUserResponse = catchAsyncError(async (req, res, next) => {
 
 module.exports.getLastQuestion = catchAsyncError(async (req, res, next) =>{
   let grpName = req.params.grpName
+  let success = true
   let currentQuestion = await findCurrentQuestion(grpName)
   if(!currentQuestion){
+    success = false
     currentQuestion = `You have successfully answered all the questions agents. The next task is to meet at St. Joseph's University for the final mission!`
   } else{
     currentQuestion = currentQuestion.question
   }
   res.status(200).json({
-    success: true,
+    success,
     message: "Successfully received the message!",
     currentQuestion
   })
@@ -99,7 +101,7 @@ module.exports.getLastQuestion = catchAsyncError(async (req, res, next) =>{
 
 module.exports.sendChatImage = catchAsyncError(async (req, res, next) => {
   const imgName = req.params.imgName
-  const imagePath = path.resolve(__dirname, `../db/chat-src/${imgName}.jpeg`);
+  const imagePath = path.resolve(__dirname, `../db/chat-src/${imgName}`);
   res.sendFile(imagePath)
 })
 
