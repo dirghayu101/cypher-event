@@ -1,24 +1,36 @@
 body{
     background-color: #15162D;
+    overflow: hidden;
 }
-
-
-.vd{
-    min-height: 7rem;
-    min-width: 7rem;
-    height: 100%;
+body>h1{
+    display: none;
+}
+.introContainer{
+    height: 100vh;
     width: 100%;
-    /* background-color: pink; */
-    margin: 5% 0% 0% 5%;
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+
+.vd{
+
+    display: flex;
+    width: 80%;
+    min-height: 7rem;
+    min-width: 7rem;
+    max-height: 100vh;
+    padding: 2%;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .vd span{
- 
+    
     z-index: 5;
     position: absolute;
     font-size: 7rem;
@@ -26,44 +38,78 @@ body{
     
 }
 #introVideo{
+    display: flex;
+    position: relative;
+
+    max-height: 80vh;
     height: 100%;
     width: 100%;
+    min-width: 50rem;
     object-fit: cover;
     -webkit-box-shadow: 3px 4px 43px -8px #2c2e61;
     -moz-box-shadow: 3px 4px 43px -8px #2c2e61;
     box-shadow: 3px 4px 43px -8px #2c2e61;
 }
+#introVideo source{
+    height: 100%;
+    width: 100%;
+}
 .instructionContainer{
-    margin-top: 15%;
+    display: none;
+    justify-self: center;
+    flex-direction:column ;
+    justify-content: center;
+    align-items: center;
+
     color: white;
-    justify-content: space-between;
+
 }
 .instructionContainer li{
     margin: 5% 0%;
 }
 .gameStartBtn{
+    display: none;
 
     padding: 1% 0%;
     width: 100%;
     position: absolute;
     bottom: 0%;
-    display: none;
     flex-direction: row;
-    justify-content: end;
+    justify-content: center;
+    align-items: center;
+}
+.gameStartBtn button{
+    width: 50%;
 }
 @media only screen and (max-width: 600px) {
+    body{
+        display: block;
+        overflow: hidden;
+    }
+    body>h1{
+        display: block;
+    }
     body{
         height: 80vh;
     }
     .introContainer{
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         padding: 0%;
         margin: 0%;
+        height: 100%;
     }
     .vd{
-        height: 100%;
-        width: 100%;
+        max-width: 90vw;
         margin: 0%;
+    }
+    #introVideo{
+        width:40%;
+        min-width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
   }

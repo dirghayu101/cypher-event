@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../styles/chatpage/chat.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
@@ -19,23 +20,33 @@
         <!-- As a link -->
         <nav class="navbar p-0 w-100 container-fluid">
             <div class="container-fluid dflex justify-content-between py-3 ">
-                <p class="navbar-brand  teamName text-light">Raw</p>
+                <p class="navbar-brand  teamName text-light">Mission Cypher</p>
 
-                <p class="navbar-brand text-light " id="timer"> <span id="min">90</span> : <span id="seconds">00</span>
+                <p class="navbar-brand text-light " id="timer"> <span id="min">90</span> : <span id="seconds"><span id="justZero">0</span>00</span>
                 </p>
 
             </div>
         </nav>
         <div class="container-fluid w-100 h-80 p-0 d-flex flex-column messageContainer">
         </div>
+        <div class="container menueOptions">
+            <button id="contactUs" class="btn btn-primary">Need Help</button>
+            <button id="lastQuestion" class="btn btn-primary">Repeat</button>
+        </div>
         <div class="container-fluid messageBar ">
-            <button type="button" class="btn btn-outline-primary menue "> <span class="material-symbols-outlined ">
+            
+            <button type="button" class="menue" id="menue"> <span class="material-symbols-outlined ">
                     menu
-                <button id="lastQuestion">Last Question</button>
-                </span></button>
+                
+                </span>
+            </button>
             <input id="msg" type="text" placeholder="Enter Message" required autocomplete="off">
-            <button type="button" class="btn btn-primary" id="chat">Chat</button>
-            <button type="button" id="serverSend" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-primary" id="chat"><span class="material-symbols-outlined">
+                chat
+                </span></button>
+            <button type="button" id="serverSend" class="btn btn-primary"><span class="material-symbols-outlined">
+                forum
+                </span></button>
 
         </div>
 

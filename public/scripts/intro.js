@@ -1,5 +1,6 @@
 const video = document.getElementById("introVideo")
 const vd = document.getElementsByClassName("vd")
+const ins = document.getElementsByClassName("instructionContainer")
 const nextbtn = document.querySelectorAll(".gameStartBtn")
 const playBtn = document.querySelectorAll(".vd span")
 
@@ -18,8 +19,8 @@ vd[0].addEventListener('click',()=>{
 video.addEventListener("ended",()=>{
     console.log("ended")
 vd[0].style.display="none";
-video.style.height="0px";
-video.style.width="0px";
+ins[0].style.display="flex"
+
 nextbtn[0].style.display="flex"
     
 })
