@@ -82,6 +82,9 @@ body>h1{
     width: 50%;
 }
 @media only screen and (max-width: 600px) {
+    body,html{
+        height: 100%;
+    }
     body{
         display: block;
         overflow: hidden;
