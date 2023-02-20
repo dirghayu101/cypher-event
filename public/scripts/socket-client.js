@@ -5,19 +5,15 @@ const chatInputBox = document.querySelector("#msg");
 const user = JSON.parse(localStorage.getItem("user"));
 const { rNum, password, grpName, name: userName } = user;
 socket.emit("joinRoom", { rNum, password, grpName });
-const serverAndClientCommunication = [];
 const audio = new Audio("../assets/audio/ting.mp3");
 
 // Function to play sound upon arrival of a new message in chat box.
-function playSound() {
-  audio.play();
+async function playSound() {
+  await audio.play();
 }
 
 // Message from server.
 socket.on("message", (message) => {
-  if (message.username === "Jenny") {
-    serverAndClientCommunication.push({ user: "Bot", text: message.text });
-  }
   showOthersMessage(message);
   messageContainer.scrollTop = messageContainer.scrollHeight; //This will scroll the page to the latest messages received.
 });
@@ -51,14 +47,14 @@ function sendChatMessage() {
 }
 
 // This will put the message on the DOM.
-function showOthersMessage(message) {
+async function showOthersMessage(message) {
   const div = document.createElement("div");
   div.classList.value = message.css;
   div.innerHTML = `<h6>Agent ${message.username}</h6>
     <p>${message.text}</p>
     <p>${message.time}</p>`;
   messageContainer.appendChild(div);
-  playSound();
+  await playSound();
   messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 

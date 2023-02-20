@@ -1,5 +1,5 @@
 const express = require("express");
-const { insertUser, authorizeAdmin, getAllUsers, getSingleUser, deleteSingleUser, updateUserInformation, getUsersByGrpName, deleteAllUsers} = require("../controllers/adminUserCollectionController");
+const { insertUser, authorizeAdmin, getAllUsers, getSingleUser, deleteSingleUser, updateUserInformation, getUsersByGrpName, deleteAllUsers, insertUserFromJsonFile} = require("../controllers/adminUserCollectionController");
 const {insertGroup, updateGroupPatch, updateGroupPut, deleteGroup, getAllGroups, getSingleGroup, deleteAllGroups} = require("../controllers/adminGroupCollectionController.js")
 const { isAuthenticatedAdmin } = require("../middleware/authorization");
 const { getAllQuestions, insertSingleQuestion, deleteQuestionsInCollection, insertQuestionsInCollection, deleteQuestionById } = require("../controllers/adminQuestionController");
@@ -14,6 +14,7 @@ router.route('/delete/:rNum').delete(isAuthenticatedAdmin, deleteSingleUser)
 router.route('/update/:rNum').patch(isAuthenticatedAdmin, updateUserInformation)
 router.route('/deleteAllUsers/confirm/deleteAll').delete(isAuthenticatedAdmin, deleteAllUsers)
 router.route('/users/:grpName').get(isAuthenticatedAdmin, getUsersByGrpName)
+router.route('/users/insert/insertUserFile').get(isAuthenticatedAdmin, insertUserFromJsonFile)
 // A path to find all the members of a particular group and a delete all users path.
 
 // Group collection route

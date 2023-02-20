@@ -1,41 +1,39 @@
 const sendBtn = document.querySelector("#serverSend");
-
-sendBtn.addEventListener("click", submitAnswer);
+const proceedMessage = `As we have received your confirmation, we will be proceeding with your request agent ${userName}.`;
+const notProceedMessage = `As I didn't receive any confirmation agent ${userName}, we won't be proceeding with your request. We are working on borrowed time, I advice you to be vigilant.`;
+const serverAndClientCommunication = [];
 const serverWarnMessage = `Are you sure you want to go ahead with this answer Agent ${userName}? We will spend resources based on your direction and it will cost us time. If you are confident about your choice submit 'CONFIRM' and we will proceed. Otherwise type anything else to cancel this request.`;
 
-/*
- * The algorithm will delete the top of array. <-- Dry run it with this case.
- *
- */
-
+sendBtn.addEventListener("click", submitAnswer);
 function submitAnswer(event) {
   event.preventDefault();
   let msgValue = chatInputBox.value;
   if (!msgValue) {
     return;
   }
-  sendChatMessage();  //! This is the point
-  serverAndClientCommunication.push({ user: userName, text: msgValue });
+  sendChatMessage(); //! Group display the user chat.
   let arrLength = serverAndClientCommunication.length;
+  serverAndClientCommunication.push({ user: userName, text: msgValue });
+  if (arrLength === 0) {
+    serverMessageGroupDisplay(serverWarnMessage);
+    return;
+  }
   if (
-    (msgValue === "CONFIRM" || msgValue === "confirm") &&
-    serverAndClientCommunication.length >= 4
+    (msgValue === "CONFIRM" ||
+      msgValue === "confirm" ||
+      msgValue === "Confirm") &&
+    arrLength >= 2
   ) {
-    serverMessageGroupDisplay(
-      `As we have received your confirmation, we will be proceeding with your request agent ${userName}.`
-    );
+    serverMessageGroupDisplay(proceedMessage);
     postAnswer();
     return;
   }
-  if (serverAndClientCommunication[arrLength - 2].text === serverWarnMessage) {
+  if (serverAndClientCommunication[arrLength - 1].text === serverWarnMessage) {
     // Check if the server asked client for confirmation.
-    serverMessageGroupDisplay(
-      `As I didn't receive any confirmation agent ${userName}, we won't be proceeding with your request. We are working on borrowed time, I advice you to be vigilant.`
-    );
+    serverMessageGroupDisplay(notProceedMessage);
     return;
   }
   serverMessageGroupDisplay(serverWarnMessage);
-
 }
 
 async function postAnswer() {
@@ -52,16 +50,17 @@ async function postAnswer() {
       password,
       grpName,
       userName,
-      // answer: message,
-      answer: 2
+      answer: message,
     }),
   }).then((res) => res.json());
   // NOTE: This will be the response by server to the answer posted by user.
   serverMessageGroupDisplay(result.message);
+  if (result.correctAnswer) {
+    result.nextQuestion.forEach(part => serverMessageGroupDisplay(part))
+  }
 }
 
-function serverSendMessage(message) {
-  serverAndClientCommunication.push({ user: "Bot", text: message });
+async function serverSendMessage(message) {
   const div = document.createElement("div");
   div.classList.value = "container-fluid serverMessage messages important";
   div.innerHTML = `<h6>Agent Jenny</h6>
@@ -69,16 +68,35 @@ function serverSendMessage(message) {
       <p>${getCurrentTime()}</p>`;
   messageContainer.appendChild(div);
   chatInputBox.value = "";
-  playSound();
+  await playSound();
   messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
-function serverMessageGroupDisplay(message){
-  socket.emit('serverMessageSend', { msg:message, rNum, password, grpName }, function(ack){
-    if(ack === 'received'){
-      serverSendMessage(message)
-    } else {
-      alert("Connection failed!");
+function serverMessageGroupDisplay(message) {
+  if (
+    message === serverWarnMessage ||
+    message === proceedMessage ||
+    message === notProceedMessage
+  ) {
+    serverAndClientCommunication.push({ user: "Bot", text: message });
+  }
+  socket.emit(
+    "serverMessageSend",
+    { msg: message, rNum, password, grpName },
+    function (ack) {
+      if (ack === "received") {
+        serverSendMessage(message);
+      } else {
+        alert("Connection failed!");
+      }
     }
-  })
+  );
+}
+
+const lastQuestionButton = document.querySelector('#lastQuestion')
+lastQuestionButton.addEventListener('click', getQuestion)
+async function getQuestion(event){
+  event.preventDefault()
+  const result = await fetch(`/user/lastQuestion/${grpName}`).then((res) => res.json());
+  result.currentQuestion.forEach(part => serverSendMessage(part))
 }
