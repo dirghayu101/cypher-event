@@ -192,9 +192,14 @@ body {
 @media only screen and (max-width: 600px) {
   body,html{
     height: 100%;
+    
+    /* overflow:hidden; */
 }
   .messageBar > button {
     border-radius: 0;
+  }
+  .parent{
+    height: 100%;
   }
   body {
     background-image: url("/user/images/mobileWallpaper.jpeg");
@@ -323,7 +328,7 @@ body {
     outline: none;
     border-radius: 50%;
     /* border-right: 0.25px solid rgba(255, 255, 255, 0.418); */
-    background-color: #0d6efd;
+    background-color: transparent;
     height:2.75rem;
   
   }
