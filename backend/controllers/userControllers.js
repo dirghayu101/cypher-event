@@ -105,6 +105,18 @@ module.exports.sendChatImage = catchAsyncError(async (req, res, next) => {
   res.sendFile(imagePath)
 })
 
+module.exports.logoutUser = catchAsyncError(async (req, res, next) => {
+  res.cookie("token", null, {
+    expires: new Date(Date.now()),
+    httpOnly: true,
+})
+
+res.status(200).json({
+    success: true,
+    message: "Logged out successfully!",
+})
+})
+
 async function findCurrentQuestion(grpName) {
   let questions = await Question.find();
   let finalQuestion
