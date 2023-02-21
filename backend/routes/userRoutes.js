@@ -9,7 +9,8 @@ const {
     sendLoginJavaScript,
     processUserResponse,
     getLastQuestion,
-    sendChatImage
+    sendChatImage,
+    logoutUser
   } = require("../controllers/userControllers");
 const { isAuthenticatedUser } = require("../middleware/authorization");
 
@@ -20,5 +21,6 @@ router.route("/chatScreen").get( isAuthenticatedUser, chatScreen).post(isAuthent
 router.route("/images/:imageName").get(isAuthenticatedUser, relatedImages); 
 router.route('/lastQuestion/:grpName').get(isAuthenticatedUser, getLastQuestion)
 router.route('/chat-src/:imgName').get(isAuthenticatedUser, sendChatImage)
+router.route('/logout').get(isAuthenticatedUser, logoutUser)
 
 module.exports = router;
