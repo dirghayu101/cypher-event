@@ -156,6 +156,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+.messageBar button:hover {
+  background: transparent;
+}
 .navbar {
   background-color: #2c2e615e;
 }
