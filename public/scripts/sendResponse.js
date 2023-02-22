@@ -21,7 +21,10 @@ function submitAnswer(event) {
   if (
     (msgValue === "CONFIRM" ||
       msgValue === "confirm" ||
-      msgValue === "Confirm") &&
+      msgValue === "Confirm") ||
+      msgValue.trim() === "confirm" ||
+      msgValue.trim() === "CONFIRM"
+      &&
     arrLength >= 2
   ) {
     serverMessageGroupDisplay(proceedMessage);
