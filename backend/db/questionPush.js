@@ -257,7 +257,7 @@ module.exports.questionArr = [
       `2, 3, 4, 6, 6, 9, 8, 12, …., ….`,
       `The locker requires a 4-digit pin-code.`
     ],
-    answer: [1015, "1015", "ten and fifteen", `10,15`, `10 and 15`, "10, 15"],
+    answer: [1015, "1015", "ten and fifteen", `10,15`, `10 and 15`, "10, 15", "10 15"],
     qNum: 2,
     grpAnswer: [
       {
@@ -463,7 +463,7 @@ module.exports.questionArr = [
     `The directory has the name “Mission_Altruism” and the file has the name “morse”. The file content is:`,
     `- .... . / ..-. .. .-. ... - / -. .- -- . / --- ..-. / - .... .. ... / .-.. --- -.-. .- - .. --- -. ---... / .---- ..--- .-.-.- ----. ..... .---- .---- --... .---- ---.. ---.. ...-- ..... ..--- -.... ..... ....- ---.. --..-- / --... --... .-.-.- ..... ---.. ..... .---- ----. ..... --... ..--- .---- ----. ..... ----- .----`,
     `Agents, we need your help to figure out the password of this directory.`],
-    answer: ['Lalbagh', 'lalbaagh', 'laal-baagh', 'laalbaagh botanical garden', 'Lal-baagh', 'Labagh Botanical Garden','lalbagh', 'lalbagh botanical garden', 'Lalbagh botanical garden', 'lalbaagh' ],
+    answer: ['Lalbagh', 'lalbaagh', 'laal-baagh', 'laalbaagh botanical garden', 'Lal-baagh', 'Labagh Botanical Garden','lalbagh', 'lalbagh botanical garden', 'Lalbagh botanical garden', 'lalbaagh', "Lalbaagh" ],
     qNum: 6,
     grpAnswer: [
       {
