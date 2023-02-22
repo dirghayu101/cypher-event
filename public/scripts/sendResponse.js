@@ -88,7 +88,7 @@ function serverMessageGroupDisplay(message) {
     { msg: message, rNum, password, grpName },
     function (ack) {
       if (ack === "received") {
-        serverSendMessage(message);
+        setTimeout(serverSendMessage(message), 4000);
       } else {
         alert("Connection failed!");
       }
@@ -106,7 +106,7 @@ const helpMessage = `If you are facing any difficulty or any issues, feel free t
 Remember, we are here to help you!`
 helpButton.addEventListener('click', printHelpSource)
 function printHelpSource(event){
-  serverSendMessage(helpMessage)
+  setTimeout(serverSendMessage(helpMessage), 4000)
 }
 
 const lastQuestionButton = document.querySelector('#lastQuestion')
@@ -115,8 +115,8 @@ async function getQuestion(event){
   event.preventDefault()
   const result = await fetch(`/user/lastQuestion/${grpName}`).then((res) => res.json());
   if(result.success){
-    result.currentQuestion.forEach(part => serverSendMessage(part))
+    result.currentQuestion.forEach(part => setTimeout(serverSendMessage(part), 3000))
   } else{
-    serverSendMessage(result.currentQuestion)
+    setTimeout(serverSendMessage(result.currentQuestion), 3000)
   }
 }

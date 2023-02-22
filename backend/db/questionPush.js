@@ -310,7 +310,7 @@ module.exports.questionArr = [
     `<img src="/user/chat-src/encPic.png" alt="map" height="300" width="400" class="message-image">`,
     `I think they have hidden some message for an insurgent in this locker.`,
     `Agents, we need your help with decoding these messages.`],
-    answer: ['KA03ZA5439', 'The info hidden in the pic is: KA03ZA5439', 5439, '5439'],
+    answer: ['KA03ZA5439', 'The info hidden in the pic is: KA03ZA5439', 5439, '5439', 'ka03 za 5439', 'ka03za5439', 'ka03 za5439'],
     qNum: 3,
     grpAnswer: [
       {
@@ -463,7 +463,7 @@ module.exports.questionArr = [
     `The directory has the name “Mission_Altruism” and the file has the name “morse”. The file content is:`,
     `- .... . / ..-. .. .-. ... - / -. .- -- . / --- ..-. / - .... .. ... / .-.. --- -.-. .- - .. --- -. ---... / .---- ..--- .-.-.- ----. ..... .---- .---- --... .---- ---.. ---.. ...-- ..... ..--- -.... ..... ....- ---.. --..-- / --... --... .-.-.- ..... ---.. ..... .---- ----. ..... --... ..--- .---- ----. ..... ----- .----`,
     `Agents, we need your help to figure out the password of this directory.`],
-    answer: ['Lalbagh', 'lalbaagh', 'laal-baagh', 'laalbaagh botanical garden', 'Lal-baagh', 'Labagh Botanical Garden','lalbagh', 'lalbagh botanical garden', 'Lalbagh botanical garden' ],
+    answer: ['Lalbagh', 'lalbaagh', 'laal-baagh', 'laalbaagh botanical garden', 'Lal-baagh', 'Labagh Botanical Garden','lalbagh', 'lalbagh botanical garden', 'Lalbagh botanical garden', 'lalbaagh' ],
     qNum: 6,
     grpAnswer: [
       {
@@ -512,7 +512,7 @@ module.exports.questionArr = [
     question: [`The department has decided to mark the content of the directory as classified, we are not allowed to tell you anything more than this:`,
     `We have found the parking location of the vehicle with explosives.`,
     `The department has decided to eliminate the vehicle discreetly so as to not wreak panic among the general public.`,
-    `We found a file with the name “AB21F3.hexadec” and it has the following content:`,
+    `We found a file with the name “AB21F3(hexadecimal)” and it has the following content:`,
     `If:<br>
     <br>
       STAND -> UVCPF<br>

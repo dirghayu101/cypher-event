@@ -13,8 +13,12 @@ async function playSound() {
 }
 
 // Message from server.
-socket.on("message", (message) => {
-  showOthersMessage(message);
+socket.on("message", async (message) => {
+  if(message.username === 'Jenny'){
+    setTimeout(showOthersMessage, 3000)
+  }else{
+    showOthersMessage(message);
+  }
   messageContainer.scrollTop = messageContainer.scrollHeight; //This will scroll the page to the latest messages received.
 });
 
