@@ -19,13 +19,11 @@ function submitAnswer(event) {
     return;
   }
   if (
-    (msgValue === "CONFIRM" ||
-      msgValue === "confirm" ||
-      msgValue === "Confirm") ||
-      msgValue.trim() === "confirm" ||
-      msgValue.trim() === "CONFIRM"
-      &&
-    arrLength >= 2
+    msgValue === "CONFIRM" ||
+    msgValue === "confirm" ||
+    msgValue === "Confirm" ||
+    msgValue.trim() === "confirm" ||
+    (msgValue.trim() === "CONFIRM" && arrLength >= 2)
   ) {
     serverMessageGroupDisplay(proceedMessage);
     postAnswer();
@@ -59,7 +57,7 @@ async function postAnswer() {
   // NOTE: This will be the response by server to the answer posted by user.
   serverMessageGroupDisplay(result.message);
   if (result.correctAnswer) {
-    result.nextQuestion.forEach(part => serverMessageGroupDisplay(part))
+    result.nextQuestion.forEach((part) => serverMessageGroupDisplay(part));
   }
 }
 
@@ -88,7 +86,7 @@ function serverMessageGroupDisplay(message) {
     { msg: message, rNum, password, grpName },
     function (ack) {
       if (ack === "received") {
-        setTimeout(serverSendMessage(message), 4000);
+        serverSendMessage(message);
       } else {
         alert("Connection failed!");
       }
@@ -96,27 +94,29 @@ function serverMessageGroupDisplay(message) {
   );
 }
 
-const helpButton = document.querySelector('#contactUs')
+const helpButton = document.querySelector("#contactUs");
 const helpMessage = `If you are facing any difficulty or any issues, feel free to contact any of the organizers by whichever mean you feel comfortable in:<br>
 <br>
 1.  +917668722367 - Dirghayu Joshi<br>
 2.  +916376084170 - Tushar Mishra<br>
 3.  +919108955449 - Heenal Jain<br>
 <br>
-Remember, we are here to help you!`
-helpButton.addEventListener('click', printHelpSource)
-function printHelpSource(event){
-  setTimeout(serverSendMessage(helpMessage), 4000)
+Remember, we are here to help you!`;
+helpButton.addEventListener("click", printHelpSource);
+function printHelpSource(event) {
+  serverSendMessage(helpMessage);
 }
 
-const lastQuestionButton = document.querySelector('#lastQuestion')
-lastQuestionButton.addEventListener('click', getQuestion)
-async function getQuestion(event){
-  event.preventDefault()
-  const result = await fetch(`/user/lastQuestion/${grpName}`).then((res) => res.json());
-  if(result.success){
-    result.currentQuestion.forEach(part => setTimeout(serverSendMessage(part), 3000))
-  } else{
-    setTimeout(serverSendMessage(result.currentQuestion), 3000)
+const lastQuestionButton = document.querySelector("#lastQuestion");
+lastQuestionButton.addEventListener("click", getQuestion);
+async function getQuestion(event) {
+  event.preventDefault();
+  const result = await fetch(`/user/lastQuestion/${grpName}`).then((res) =>
+    res.json()
+  );
+  if (result.success) {
+    result.currentQuestion.forEach((part) => serverSendMessage(part));
+  } else {
+    serverSendMessage(result.currentQuestion);
   }
 }
