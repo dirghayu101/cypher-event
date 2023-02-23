@@ -1,7 +1,7 @@
 module.exports.questionArr = [
 
   {
-    question:[`We have some hostile organisations on our radar. They are not very delighted with the recent India-Israel deal and fancy giving us a lesson.`, `Our sources say they are planning something big. We have got hold of some social media handles of some hostile organisations which might carry out these plans.`,`Agents your task is to find out the most likely of them behind this conspiracy.`, `Since this is a recent development you should start by carrying out a thorough analysis of their recent social media post.`, `The Instagram usernames are:`,`1. order_of_the_black_hand`,`2. infernal_syndicate`,`3. the_dark_empire_`],
+    question:[`We have some hostile organisations on our radar. They are not very delighted with the recent India-Israel deal and fancy giving us a lesson.`, `Our sources say they are planning something big. We have got hold of some social media handles of some hostile organisations which might carry out these plans.`,`Agents your task is to find out the most likely of them behind this conspiracy.`, `Since this is a recent development you should start by carrying out a thorough analysis of their recent social media post.`, `The Instagram usernames are:`,`1. order_of_the_black_hand`,`2. infernal_syndicate`,`3. the_darkempire_`],
     answer: [2, "two", "Two", "TWO", "2", "second", "Second", "SECOND", "infernal_syndicate", "Infernal Syndicate", "Syndicate Infernal", "infernal syndicate", "infernal  syndicate", "2.", "Second Option", "Second option", "second option"],
     qNum: 1,
     grpAnswer: [
@@ -823,7 +823,7 @@ module.exports.questionArr = [
     `The directory has the name “Mission_Altruism” and the file has the name “morse”. The file content is:`,
     `- .... . / ..-. .. .-. ... - / -. .- -- . / --- ..-. / - .... .. ... / .-.. --- -.-. .- - .. --- -. ---... / .---- ..--- .-.-.- ----. ..... .---- .---- --... .---- ---.. ---.. ...-- ..... ..--- -.... ..... ....- ---.. --..-- / --... --... .-.-.- ..... ---.. ..... .---- ----. ..... --... ..--- .---- ----. ..... ----- .----`,
     `Agents, we need your help to figure out the password of this directory.`],
-    answer: ['Lalbagh', 'lalbaagh', 'laal-baagh', 'laalbaagh botanical garden', 'Lal-baagh', 'Labagh Botanical Garden','lalbagh', 'lalbagh botanical garden', 'Lalbagh botanical garden', 'lalbaagh', "Lalbaagh" ],
+    answer: ['Lalbagh', 'lalbaagh', 'laal-baagh', 'laalbaagh botanical garden', 'Lal-baagh', 'Lalbagh Botanical Garden','lalbagh', 'lalbagh botanical garden', 'Lalbagh botanical garden', 'lalbaagh', "Lalbaagh" ],
     qNum: 6,
     grpAnswer: [
       {
