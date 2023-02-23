@@ -1,6 +1,7 @@
 body{
     background-color: #15162D;
-    overflow: hidden;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 body>h1{
     display: none;
@@ -65,36 +66,44 @@ body>h1{
 
 }
 .instructionContainer li{
-    margin: 5% 0%;
+    font-size: larger;
+    margin: 2rem 0%;
+    width: 80%;
+    
 }
 .gameStartBtn{
     display: none;
 
     padding: 1% 0%;
     width: 100%;
-    position: absolute;
-    bottom: 0%;
+    
+
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 .gameStartBtn button{
+    margin-top: 7%;
     width: 50%;
 }
 @media only screen and (max-width: 600px) {
     body,html{
         height: 100%;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
     }
     body{
-        display: block;
-        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     body>h1{
-        display: block;
+        display: flex;
+        margin: 55% 0rem;
     }
-    body{
-        height: 80vh;
-    }
+    
     .introContainer{
         display: flex;
         flex-direction: column;
@@ -114,5 +123,16 @@ body>h1{
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .instructionContainer{
+        
+        position: absolute;
+        top: 4%;
+    }
+    .instructionContainer li{
+        font-size: 18px;
+        height: fit-content;
+        
+        
     }
   }
