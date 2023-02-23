@@ -3,6 +3,7 @@ const proceedMessage = `As we have received your confirmation, we will be procee
 const notProceedMessage = `As I didn't receive any confirmation agent ${userName}, we won't be proceeding with your request. We are working on borrowed time, I advice you to be vigilant.`;
 const serverAndClientCommunication = [];
 const serverWarnMessage = `Are you sure you want to go ahead with this answer Agent ${userName}? We will spend resources based on your direction and it will cost us time. If you are confident about your choice submit 'CONFIRM' and we will proceed. Otherwise type anything else to cancel this request.`;
+messageContainer = document.querySelector(".messageContainer");
 
 sendBtn.addEventListener("click", submitAnswer);
 function submitAnswer(event) {
@@ -26,15 +27,18 @@ function submitAnswer(event) {
     (msgValue.trim() === "CONFIRM" && arrLength >= 2)
   ) {
     serverMessageGroupDisplay(proceedMessage);
+    messageContainer.scrollTop = messageContainer.scrollHeight;
     postAnswer();
     return;
   }
   if (serverAndClientCommunication[arrLength - 1].text === serverWarnMessage) {
     // Check if the server asked client for confirmation.
     serverMessageGroupDisplay(notProceedMessage);
+    messageContainer.scrollTop = messageContainer.scrollHeight;
     return;
   }
   serverMessageGroupDisplay(serverWarnMessage);
+  messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
 async function postAnswer() {
@@ -87,6 +91,7 @@ function serverMessageGroupDisplay(message) {
     function (ack) {
       if (ack === "received") {
         serverSendMessage(message);
+        messageContainer.scrollTop = messageContainer.scrollHeight;
       } else {
         alert("Connection failed!");
       }
@@ -105,6 +110,7 @@ Remember, we are here to help you!`;
 helpButton.addEventListener("click", printHelpSource);
 function printHelpSource(event) {
   serverSendMessage(helpMessage);
+  messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
 const lastQuestionButton = document.querySelector("#lastQuestion");
@@ -118,5 +124,6 @@ async function getQuestion(event) {
     result.currentQuestion.forEach((part) => serverSendMessage(part));
   } else {
     serverSendMessage(result.currentQuestion);
+    messageContainer.scrollTop = messageContainer.scrollHeight;
   }
 }

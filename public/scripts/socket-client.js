@@ -1,6 +1,6 @@
 const socket = io();
 const chatButton = document.querySelector("#chat");
-const messageContainer = document.querySelector(".messageContainer");
+let messageContainer = document.querySelector(".messageContainer");
 const chatInputBox = document.querySelector("#msg");
 const user = JSON.parse(localStorage.getItem("user"));
 const { rNum, password, grpName, name: userName } = user;
