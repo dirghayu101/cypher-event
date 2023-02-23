@@ -962,7 +962,7 @@ module.exports.questionArr = [
     question: [`The explosives had already left the warehouse by the time our team reached. We checked the parked location and got a prescription.`,
     `The prescription was of St. John’s Hospital and luckily this time, we found a crucial member of this entire plan in the hospital.`,
     `We found some encrypted message on his mobile phone:`,
-    `iKZ/YVQhkd8MvlVVRw+5EKL3SWwOS8UKFmTtdfH9KZA82DuiV5hZe1EW783YNYWaCW5VhEaSzbcnk67ZlZTw19pT3vgRbt4F3C2ibGiITyI=`,
+    `<img src="/user/chat-src/encrypt-text.png" alt="map" height="300" width="400" class="message-image">`,
     `And also, we got this sheet of paper upon interrogation:`,
     `<img src="/user/chat-src/last.jpeg" alt="map" height="300" width="400" class="message-image">`,
   `Agents, you are supposed to find the coordinates of bomb blast based on this sheet of paper.`],

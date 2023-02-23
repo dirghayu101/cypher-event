@@ -4,7 +4,7 @@ const seconds = document.querySelector("#seconds")
 const min = document.querySelector("#min")
 const zero = document.querySelector("#justZero")
 var minutes = 89;
-
+document.cookie=""
 var secon = 60;
 min.innerText=minutes
 

@@ -338,5 +338,11 @@ body {
   .teamName{
     padding-left: 1rem;
   }
-
+  .message-image{
+    width: 100%;
+    padding: 1rem;
+  }
+  #text{
+    width: 80%;
+  }
 }
