@@ -3,6 +3,7 @@ const proceedMessage = `As we have received your confirmation, we will be procee
 const notProceedMessage = `As I didn't receive any confirmation agent ${userName}, we won't be proceeding with your request. We are working on borrowed time, I advice you to be vigilant.`;
 const serverAndClientCommunication = [];
 const serverWarnMessage = `Are you sure you want to go ahead with this answer Agent ${userName}? We will spend resources based on your direction and it will cost us time. If you are confident about your choice submit 'CONFIRM' and we will proceed. Otherwise type anything else to cancel this request.`;
+messageContainer = document.querySelector(".messageContainer");
 
 sendBtn.addEventListener("click", submitAnswer);
 function submitAnswer(event) {
@@ -19,21 +20,25 @@ function submitAnswer(event) {
     return;
   }
   if (
-    (msgValue === "CONFIRM" ||
-      msgValue === "confirm" ||
-      msgValue === "Confirm") &&
-    arrLength >= 2
+    msgValue === "CONFIRM" ||
+    msgValue === "confirm" ||
+    msgValue === "Confirm" ||
+    msgValue.trim() === "confirm" ||
+    (msgValue.trim() === "CONFIRM" && arrLength >= 2)
   ) {
     serverMessageGroupDisplay(proceedMessage);
+    messageContainer.scrollTop = messageContainer.scrollHeight;
     postAnswer();
     return;
   }
   if (serverAndClientCommunication[arrLength - 1].text === serverWarnMessage) {
     // Check if the server asked client for confirmation.
     serverMessageGroupDisplay(notProceedMessage);
+    messageContainer.scrollTop = messageContainer.scrollHeight;
     return;
   }
   serverMessageGroupDisplay(serverWarnMessage);
+  messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
 async function postAnswer() {
@@ -56,7 +61,7 @@ async function postAnswer() {
   // NOTE: This will be the response by server to the answer posted by user.
   serverMessageGroupDisplay(result.message);
   if (result.correctAnswer) {
-    result.nextQuestion.forEach(part => serverMessageGroupDisplay(part))
+    result.nextQuestion.forEach((part) => serverMessageGroupDisplay(part));
   }
 }
 
@@ -86,6 +91,7 @@ function serverMessageGroupDisplay(message) {
     function (ack) {
       if (ack === "received") {
         serverSendMessage(message);
+        messageContainer.scrollTop = messageContainer.scrollHeight;
       } else {
         alert("Connection failed!");
       }
@@ -93,27 +99,31 @@ function serverMessageGroupDisplay(message) {
   );
 }
 
-const helpButton = document.querySelector('#contactUs')
+const helpButton = document.querySelector("#contactUs");
 const helpMessage = `If you are facing any difficulty or any issues, feel free to contact any of the organizers by whichever mean you feel comfortable in:<br>
 <br>
 1.  +917668722367 - Dirghayu Joshi<br>
 2.  +916376084170 - Tushar Mishra<br>
 3.  +919108955449 - Heenal Jain<br>
 <br>
-Remember, we are here to help you!`
-helpButton.addEventListener('click', printHelpSource)
-function printHelpSource(event){
-  serverSendMessage(helpMessage)
+Remember, we are here to help you!`;
+helpButton.addEventListener("click", printHelpSource);
+function printHelpSource(event) {
+  serverSendMessage(helpMessage);
+  messageContainer.scrollTop = messageContainer.scrollHeight;
 }
 
-const lastQuestionButton = document.querySelector('#lastQuestion')
-lastQuestionButton.addEventListener('click', getQuestion)
-async function getQuestion(event){
-  event.preventDefault()
-  const result = await fetch(`/user/lastQuestion/${grpName}`).then((res) => res.json());
-  if(result.success){
-    result.currentQuestion.forEach(part => serverSendMessage(part))
-  } else{
-    serverSendMessage(result.currentQuestion)
+const lastQuestionButton = document.querySelector("#lastQuestion");
+lastQuestionButton.addEventListener("click", getQuestion);
+async function getQuestion(event) {
+  event.preventDefault();
+  const result = await fetch(`/user/lastQuestion/${grpName}`).then((res) =>
+    res.json()
+  );
+  if (result.success) {
+    result.currentQuestion.forEach((part) => serverSendMessage(part));
+  } else {
+    serverSendMessage(result.currentQuestion);
+    messageContainer.scrollTop = messageContainer.scrollHeight;
   }
 }
