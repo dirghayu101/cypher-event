@@ -436,7 +436,7 @@ let Groups = [
   },
   {
     grpName: "Alpha-Test",
-    grpID: 28,
+    grpID: 35,
     grpMembers: [
       {
         rNum: "20BCAA20",
@@ -454,7 +454,7 @@ let Groups = [
   },
   {
     grpName: "Beta-Test",
-    grpID: 29,
+    grpID: 36,
     grpMembers: [
       {
         rNum: "20BCAA23",
@@ -472,7 +472,7 @@ let Groups = [
   },
   {
     grpName: "Gama-Test",
-    grpID: 30,
+    grpID: 37,
     grpMembers: [
       {
         rNum: "20BCAA26",
@@ -490,7 +490,7 @@ let Groups = [
   },
   {
     grpName: "Theta-Test",
-    grpID: 31,
+    grpID: 38,
     grpMembers: [
       {
         rNum: "20BCAA29",
@@ -501,6 +501,134 @@ let Groups = [
         name: "Keshava",
       },
     ],
+  },
+  {
+    grpName: "Twenty-eighth",
+    grpID: 28,
+    grpMembers: [
+      {
+        rNum: "21BCAR0101",
+        name: "Anshika",
+      },
+      {
+        rNum: "21BCAR0207",
+        name: "Nishitha",
+      },
+      {
+        rNum: "21BCAR0149",
+        name: "Varsha",
+      },
+    ]
+  },
+  {
+    grpName: "Twenty-ninth",
+    grpID: 29,
+    grpMembers: [
+      {
+        rNum: "21BCAR0165",
+        name: "Hashim",
+      },
+      {
+        rNum: "21BCAR0193",
+        name: "Bhavesh",
+      },
+      {
+        rNum: "21BCAR0112",
+        name: "Jeevan",
+      },
+    ]
+  },
+  {
+    grpName: "Thirtieth",
+    grpID: 30,
+    grpMembers: [
+      {
+        rNum: "2240263",
+        name: "Manasveer",
+      },
+      {
+        rNum: "2240260",
+        name: "Khevan",
+      },
+      {
+        rNum: "2240235",
+        name: "Uddipana",
+      },
+    ]
+  },
+  {
+    grpName: "Thirty-first",
+    grpID: 31,
+    grpMembers: [
+      {
+        rNum: "2240224",
+        name: "Nigel",
+      },
+      // Checked
+      {
+        rNum: "2240285",
+        name: "Dheexshan",
+      },
+      // Checked
+      {
+        rNum: "2240242",
+        name: "Nicolas",
+      },
+    ]
+  },
+  {
+    grpName: "Thirty-second",
+    grpID: 32,
+    grpMembers: [
+      {
+        rNum: "21BCAR0027",
+        name: "Gagan",
+      },
+      {
+        rNum: "21BCAR0032",
+        name: "Harshit",
+      },
+      {
+        rNum: "21BCAR0152",
+        name: "Aaryan",
+      },
+    ]
+  },
+  {
+    grpName: "Thirty-third",
+    grpID: 33,
+    grpMembers: [
+      {
+        rNum: "2141121",
+        name: "Kunal"
+      },
+      {
+        rNum: "2141119",
+        name: "Krishi"
+      },
+      {
+        rNum: "2141015",
+        name: "Harsh"
+      },
+    ]
+  },
+  {
+    grpName: "Thirty-fourth",
+    grpID: 34,
+    grpMembers: [
+      {
+        rNum: "2240222",
+        name: "Merina",
+      },
+      {
+        rNum: "2240282",
+        name: "Anavadhya",
+      },
+      {
+        rNum: "2240286",
+        name: "Phinehas",
+      },
+    ]
   },
 ];
 

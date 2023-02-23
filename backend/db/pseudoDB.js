@@ -710,7 +710,190 @@ let Users = [
     css: cssValues["first"],
   },
 
-  // NOTE Dummy entries beyond this
+  // Checked
+  {
+    rNum: "21BCAR0101",
+    name: "Anshika",
+    college: "Jain( Deemed-To-Be) University, Jayanagar",
+    fromSJU: false,
+    password: "9829048000",
+    grpName: "Twenty-eighth",
+    css: cssValues["first"],
+  },
+  // Checked
+  {
+    rNum: "21BCAR0207",
+    name: "Nishitha",
+    college: "Jain( Deemed-To-Be) University, Jayanagar",
+    fromSJU: false,
+    password: "9908310157",
+    grpName: "Twenty-eighth",
+    css: cssValues["second"],
+  },
+  // Checked
+  {
+    rNum: "21BCAR0149",
+    name: "Varsha",
+    college: "Jain( Deemed-To-Be) University, Jayanagar",
+    fromSJU: false,
+    password: "8197374951",
+    grpName: "Twenty-eighth",
+    css: cssValues["third"],
+  },
+  // Checked
+  {
+    rNum: "21BCAR0165",
+    name: "Hashim",
+    college: "Jain( Deemed-To-Be) University, Jayanagar",
+    fromSJU: false,
+    password: "9633255627",
+    grpName: "Twenty-ninth",
+    css: cssValues["third"],
+  },
+  // Checked
+  {
+    rNum: "21BCAR0193",
+    name: "Bhavesh",
+    college: "Jain( Deemed-To-Be) University, Jayanagar",
+    fromSJU: false,
+    password: "7019213522",
+    grpName: "Twenty-ninth",
+    css: cssValues["second"],
+  },
+  // Checked
+  {
+    rNum: "21BCAR0112",
+    name: "Jeevan",
+    college: "Jain( Deemed-To-Be) University, Jayanagar",
+    fromSJU: false,
+    password: "8660625765",
+    grpName: "Twenty-ninth",
+    css: cssValues["first"],
+  },
+  // Checked
+  {
+    rNum: "2240263",
+    name: "Manasveer",
+    college: "Christ University",
+    fromSJU: false,
+    password: "7088494292",
+    grpName: "Thirtieth",
+    css: cssValues["third"],
+  },
+  // Checked
+  {
+    rNum: "2240260",
+    name: "Khevan",
+    college: "Christ University",
+    fromSJU: false,
+    password: "8141450502",
+    grpName: "Thirtieth",
+    css: cssValues["second"],
+  },
+  // Checked
+  {
+    rNum: "2240235",
+    name: "Uddipana",
+    college: "Christ University",
+    fromSJU: false,
+    password: "8876549178",
+    grpName: "Thirtieth",
+    css: cssValues["first"],
+  },
+  //  Checked
+  {
+    rNum: "2240224",
+    name: "Nigel",
+    college: "Christ University",
+    fromSJU: false,
+    password: "8777024117",
+    grpName: "Thirty-first",
+    css: cssValues["third"],
+  },
+  // Checked
+  {
+    rNum: "2240285",
+    name: "Dheexshan",
+    college: "Christ University",
+    fromSJU: false,
+    password: "9940673254",
+    grpName: "Thirty-first",
+    css: cssValues["second"],
+  },
+  // Checked
+  {
+    rNum: "2240242",
+    name: "Nicolas",
+    college: "Christ University",
+    fromSJU: false,
+    password: "8317369582",
+    grpName: "Thirty-first",
+    css: cssValues["first"],
+  },
+  
+
+  // Checked
+  {
+    rNum: "2141121",
+    name: "Kunal",
+    college: "Christ University",
+    fromSJU: false,
+    password: "8660129791",
+    grpName: "Thirty-third",
+    css: cssValues["third"],
+  },
+
+  // Checked
+  {
+    rNum: "2141119",
+    name: "Krishi",
+    college: "Christ University",
+    fromSJU: false,
+    password: "8250226290",
+    grpName: "Thirty-third",
+    css: cssValues["second"],
+  },
+
+  // Checked
+  {
+    rNum: "2141015",
+    name: "Harsh",
+    college: "Christ University",
+    fromSJU: false,
+    password: "8348623656",
+    grpName: "Thirty-third",
+    css: cssValues["first"],
+  },
+  // Checked
+  {
+    rNum: "2240222",
+    name: "Merina",
+    college: "Christ University",
+    fromSJU: false,
+    password: "8714425988",
+    grpName: "Thirty-fourth",
+    css: cssValues["third"],
+  },
+  // Checked
+  {
+    rNum: "2240282",
+    name: "Anavadhya",
+    college: "Christ University",
+    fromSJU: false,
+    password: "9972692210",
+    grpName: "Thirty-fourth",
+    css: cssValues["second"],
+  },
+  // Checked
+  {
+    rNum: "2240286",
+    name: "Phinehas",
+    college: "Christ University",
+    fromSJU: false,
+    password: "9962700738",
+    grpName: "Thirty-fourth",
+    css: cssValues["first"],
+  },
 
   {
     rNum: "20BCAA20",
