@@ -2,6 +2,10 @@
   --primary-color: #15162d;
   --shadow-color: #2c2e61;
 }
+html,body{
+  height: 100%;
+  width: 100%;
+}
 p {
   margin: 0;
 }
@@ -192,7 +196,7 @@ body {
 
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 720px) {
   body,html{
     height: 100%;
     
